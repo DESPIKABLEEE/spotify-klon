@@ -1,0 +1,47 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 6vh;
+//   width: 100vw;
+  background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+  padding: 1rem;
+
+  .footer-left {
+    justify-content: start;
+    display: flex;
+    flex-direction: column;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: opacity 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .footer-right {
+    display: flex;
+    justify-content: end;
+
+    button {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+}
