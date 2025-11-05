@@ -1,12 +1,17 @@
 .navbar {
-  min-height: 6vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
   display: flex;
   flex-direction: row;
   align-items: center;
-//   background-color: #121212;
+  background-color: #000;
   color: white;
   justify-content: space-between;
   padding: 0 1rem;
+  z-index: 100;
 
   .navbar-left {
     display: flex;

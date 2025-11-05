@@ -1,3 +1,4 @@
+import './Trending.scss'
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import spotifyStore from '../stores/spotifyStore';
@@ -23,62 +24,88 @@ const Trending = observer(() => {
     );
   }
 
+  const renderTracks = () => {
+    return spotifyStore.trendingSongs.slice(0, 20).map(track => {
+      const artwork = track.album?.images?.[0]?.url || '/placeholder.png';
+      const artists = track.artists?.map(artist => artist.name).join(', ');
+      return (
+        <div key={track.id} className="media-card">
+          <div className="media-thumb">
+            <img src={artwork} alt={track.name} />
+          </div>
+          <div className="media-meta">
+            <h3>{track.name}</h3>
+            <p>{artists}</p>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  const renderArtists = () => {
+    return spotifyStore.popularArtists.slice(0, 20).map(artist => {
+      const artwork = artist.images?.[0]?.url || '/placeholder.png';
+      return (
+        <div key={artist.id} className="media-card">
+          <div className="media-thumb artist">
+            <img src={artwork} alt={artist.name} />
+          </div>
+          <div className="media-meta">
+            <h3>{artist.name}</h3>
+            <p>Artist</p>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  const renderAlbums = () => {
+    return spotifyStore.popularAlbums.slice(0, 20).map(album => {
+      const artwork = album.images?.[0]?.url || '/placeholder.png';
+      const artists = album.artists?.map(artist => artist.name).join(', ');
+      return (
+        <div key={album.id} className="media-card">
+          <div className="media-thumb">
+            <img src={artwork} alt={album.name} />
+          </div>
+          <div className="media-meta">
+            <h3>{album.name}</h3>
+            <p>{artists}</p>
+          </div>
+        </div>
+      );
+    });
+  };
+
   return (
     <div className="trending">
-      {/* Featured Playlists */}
       <section className="trending-section">
-        <h2>Featured Playlists</h2>
-        <div className="content-grid">
-          {spotifyStore.featuredPlaylists.map((playlist) => (
-            <div key={playlist.id} className="content-card">
-              <img
-                src={playlist.images?.[0]?.url || '/placeholder.png'}
-                alt={playlist.name}
-                className="card-image"
-              />
-              <div className="card-info">
-                <h3>{playlist.name}</h3>
-                <p>{playlist.description}</p>
-              </div>
-            </div>
-          ))}
+        <div className="section-header">
+          <h2>Trending Songs</h2>
+          <a href="#">Show all</a>
+        </div>
+        <div className="card-row">
+          {renderTracks()}
         </div>
       </section>
 
       <section className="trending-section">
-        <h2>New Releases</h2>
-        <div className="content-grid">
-          {spotifyStore.newReleases.map((album) => (
-            <div key={album.id} className="content-card">
-              <img
-                src={album.images?.[0]?.url || '/placeholder.png'}
-                alt={album.name}
-                className="card-image"
-              />
-              <div className="card-info">
-                <h3>{album.name}</h3>
-                <p>{album.artists?.map(artist => artist.name).join(', ')}</p>
-              </div>
-            </div>
-          ))}
+        <div className="section-header">
+          <h2>Popular Artists</h2>
+          <a href="#">Show all</a>
+        </div>
+        <div className="card-row">
+          {renderArtists()}
         </div>
       </section>
 
       <section className="trending-section">
-        <h2>Browse Categories</h2>
-        <div className="content-grid">
-          {spotifyStore.categories.map((category) => (
-            <div key={category.id} className="content-card category-card">
-              <img
-                src={category.icons?.[0]?.url || '/placeholder.png'}
-                alt={category.name}
-                className="card-image"
-              />
-              <div className="card-info">
-                <h3>{category.name}</h3>
-              </div>
-            </div>
-          ))}
+        <div className="section-header">
+          <h2>Popular Albums & Singles</h2>
+          <a href="#">Show all</a>
+        </div>
+        <div className="card-row">
+          {renderAlbums()}
         </div>
       </section>
     </div>

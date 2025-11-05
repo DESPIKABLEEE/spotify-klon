@@ -8,7 +8,7 @@ function Navbar() {
         <div className="navbar-left">
             
             <div className="left-left">
-                <SpotifyLogo size={34} weight='fill' color='white'/>
+                <SpotifyLogo size={34} weight='fill' color='#FFFFFF'/>
             </div>
             <div className="left-right">
                 <div className="home-icon">

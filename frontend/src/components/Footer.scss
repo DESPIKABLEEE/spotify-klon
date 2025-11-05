@@ -1,12 +1,16 @@
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  min-height: 6vh;
-//   width: 100vw;
+  height: 64px;
   background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
   padding: 1rem;
+  z-index: 50;
 
   .footer-left {
     justify-content: start;

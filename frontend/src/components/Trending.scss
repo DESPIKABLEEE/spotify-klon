@@ -1,8 +1,9 @@
 .trending {
-  padding: 2rem;
-  color: white;
+  padding: 2rem 0;
+  color: #fff;
 
-  .loading, .error {
+  .loading,
+  .error {
     text-align: center;
     padding: 2rem;
     font-size: 1.2rem;
@@ -13,79 +14,113 @@
   }
 
   .trending-section {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 
-    h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: #ffffff;
-    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
 
-    .content-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.5rem;
+      h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+      }
 
-      .content-card {
-        background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
-        border-radius: 12px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border: 1px solid rgba(255,255,255,0.05);
+      a {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #b3b3b3;
+        text-decoration: none;
+        transition: color 0.2s ease;
 
         &:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+          color: #fff;
+        }
+      }
+    }
+
+    .card-row {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .media-card {
+        flex: 0 0 18%;
+        min-width: 210px;
+        max-width: 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        border-radius: 12px;
+        padding: 1rem;
+        background-color: transparent;
+        transition: background-color 0.2s ease;
+        cursor: pointer;
+        scroll-snap-align: start;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .card-image {
+        .media-thumb {
           width: 100%;
-          height: 200px;
-          object-fit: cover;
+          aspect-ratio: 1 / 1;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          background-color: rgba(255, 255, 255, 0.05);
+
+          &.artist {
+            border-radius: 50%;
+
+            img {
+              border-radius: 50%;
+            }
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
 
-        .card-info {
-          padding: 1rem;
+        .media-meta {
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
 
           h3 {
             font-size: 1rem;
             font-weight: 600;
-            margin: 0 0 0.5rem 0;
-            color: #ffffff;
-            line-height: 1.3;
+            color: #fff;
+            margin: 0;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
           p {
             font-size: 0.9rem;
             color: #b3b3b3;
             margin: 0;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
+            line-height: 1.2;
+            white-space: nowrap;
             overflow: hidden;
-          }
-        }
-      }
-
-      .category-card {
-        .card-image {
-          height: 150px;
-          border-radius: 50%;
-          margin: 1rem auto 0;
-          width: 150px;
-        }
-
-        .card-info {
-          text-align: center;
-          padding: 1rem 0.5rem;
-
-          h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0;
+            text-overflow: ellipsis;
           }
         }
       }

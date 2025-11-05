@@ -55,15 +55,23 @@ class SpotifyAPI {
   }
 
   async getFeaturedPlaylists(limit = 20) {
-    return this.makeRequest(`/browse/featured-playlists?limit=${limit}&locale=en_US`);
+    const result = await this.makeRequest(`/search?q=playlist&type=playlist&limit=${limit}`);
+    return { playlists: { items: result.playlists?.items || [] } };
   }
 
   async getNewReleases(limit = 20) {
-    return this.makeRequest(`/browse/new-releases?limit=${limit}&country=US`);
+    const result = await this.makeRequest(`/search?q=album&type=album&limit=${limit}`);
+    return { albums: { items: result.albums?.items || [] } };
   }
 
-  async getCategories(limit = 20) {
-    return this.makeRequest(`/browse/categories?limit=${limit}&country=US&locale=en_US`);
+  async getPopularArtists(limit = 20) {
+    const result = await this.makeRequest(`/search?q=artist&type=artist&limit=${limit}`);
+    return { artists: { items: result.artists?.items || [] } };
+  }
+  
+  async getPopularTracks(limit = 20) {
+    const result = await this.makeRequest(`/search?q=track&type=track&limit=${limit}`);
+    return { tracks: { items: result.tracks?.items || [] } };
   }
 }
 

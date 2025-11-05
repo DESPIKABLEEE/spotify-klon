@@ -2,17 +2,17 @@ import { makeObservable, observable, action } from 'mobx';
 import spotifyAPI from '../services/spotifyAPI';
 
 class SpotifyStore {
-  featuredPlaylists = [];
-  newReleases = [];
-  categories = [];
+  trendingSongs = [];
+  popularArtists = [];
+  popularAlbums = [];
   loading = false;
   error = null;
 
   constructor() {
     makeObservable(this, {
-      featuredPlaylists: observable,
-      newReleases: observable,
-      categories: observable,
+      trendingSongs: observable,
+      popularArtists: observable,
+      popularAlbums: observable,
       loading: observable,
       error: observable,
       fetchTrendingData: action,
@@ -34,15 +34,15 @@ class SpotifyStore {
       this.setLoading(true);
       this.setError(null);
 
-      const [playlistsData, releasesData, categoriesData] = await Promise.all([
-        spotifyAPI.getFeaturedPlaylists(10),
-        spotifyAPI.getNewReleases(10),
-        spotifyAPI.getCategories(10)
+      const [tracksData, artistsData, albumsData] = await Promise.all([
+        spotifyAPI.getPopularTracks(20),
+        spotifyAPI.getPopularArtists(20),
+        spotifyAPI.getNewReleases(20)
       ]);
 
-      this.featuredPlaylists = playlistsData.playlists?.items || [];
-      this.newReleases = releasesData.albums?.items || [];
-      this.categories = categoriesData.categories?.items || [];
+      this.trendingSongs = tracksData.tracks?.items || [];
+      this.popularArtists = artistsData.artists?.items || [];
+      this.popularAlbums = albumsData.albums?.items || [];
 
     } catch (err) {
       console.error('Error fetching trending data:', err);
