@@ -29,7 +29,10 @@ class SpotifyStore {
     this.error = error;
   }
 
-  async fetchTrendingData() {
+  async fetchTrendingData(force = false) {
+    if (!force && this.trendingSongs.length && this.popularArtists.length && this.popularAlbums.length) {
+      return;
+    }
     try {
       this.setLoading(true);
       this.setError(null);

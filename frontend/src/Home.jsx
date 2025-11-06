@@ -1,8 +1,8 @@
 import './Home.scss'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Trending from './components/Trending'
 import { Plus  } from '@phosphor-icons/react'
+import { Outlet } from 'react-router-dom'
 
 function Home() {
   return (
@@ -53,7 +53,7 @@ function Home() {
           </div>
 
           <div className="content-right">
-            <Trending />
+            <Outlet />
           </div>
 
         </div>

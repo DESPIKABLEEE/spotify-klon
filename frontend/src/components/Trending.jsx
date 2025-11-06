@@ -1,6 +1,7 @@
 import './Trending.scss'
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
 import spotifyStore from '../stores/spotifyStore';
 
 const Trending = observer(() => {
@@ -82,7 +83,7 @@ const Trending = observer(() => {
       <section className="trending-section">
         <div className="section-header">
           <h2>Trending Songs</h2>
-          <a href="#">Show all</a>
+          <Link to="/section/trending-songs">Show all</Link>
         </div>
         <div className="card-row">
           {renderTracks()}
@@ -92,7 +93,7 @@ const Trending = observer(() => {
       <section className="trending-section">
         <div className="section-header">
           <h2>Popular Artists</h2>
-          <a href="#">Show all</a>
+          <Link to="/section/popular-artists">Show all</Link>
         </div>
         <div className="card-row">
           {renderArtists()}
@@ -102,7 +103,7 @@ const Trending = observer(() => {
       <section className="trending-section">
         <div className="section-header">
           <h2>Popular Albums & Singles</h2>
-          <a href="#">Show all</a>
+          <Link to="/section/popular-albums">Show all</Link>
         </div>
         <div className="card-row">
           {renderAlbums()}
