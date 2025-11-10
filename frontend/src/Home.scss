@@ -1,18 +1,19 @@
 :root{
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+$backgroud : #000;
 
 .wrapper{
     min-height: 100vh;
     width: 100vw;
     padding: 64px 7px;
     box-sizing: border-box;
-    background-color: #000;
+    background-color: $backgroud;
     display: flex;
     flex-direction: column;
     
     .main-content{
-        background-color: #000;
+        background-color: $backgroud;
         width: 100%;
         display: flex;
         align-items: stretch;
@@ -137,7 +138,7 @@
                             border-radius: 1.5rem;  
                             text-decoration: none;
                             font-weight: 600;
-                            color: #000000;
+                            color: $backgroud;
                             font-size: 14px;
                             display: inline-block;
                             transition: all 0.3s ease;
@@ -279,7 +280,7 @@
 
                     &:last-of-type{
                         background: #ffffff;
-                        color: #000000;
+                        color: $backgroud;
 
                         &:hover{
                             background: linear-gradient(135deg, #25e668 0%, #1ab851 100%);
