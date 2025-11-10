@@ -2,7 +2,7 @@ import './Home.scss'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { Plus  } from '@phosphor-icons/react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom'
 import { useState } from 'react'
 function Home() {
   const [openPopup, setOpenPopup] = useState(false)
@@ -62,16 +62,16 @@ function Home() {
 
         {openPopup && (
           <div className="playlist-popup">
-            <div className="playlist-popup__header">
+            <div className="playlist-popup-header">
               <h3>Create a playlist</h3>
               <p>Log in to create and share playlists.</p>
             </div>
-            <div className="playlist-popup__actions">
+            <div className="playlist-popup-actions">
               <a href="#" onClick={(event) => {
                 event.preventDefault()
                 setOpenPopup(false)
               }}>Not now</a>
-              <a href="#" onClick={(event) => event.preventDefault()}>Log in</a>
+              <Link to="/login" onClick={() => setOpenPopup(false)}>Log in</Link>
             </div>
           </div>
         )}

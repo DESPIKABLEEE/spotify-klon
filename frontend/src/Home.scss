@@ -230,17 +230,18 @@ $backgroud : #000;
             flex-direction: column;
             gap: 1rem;
             z-index: 200;
-                &::before{
-                    content: '';
-                    position: absolute;
-                    left: -12px;
-                    top: 48px;
-                    border-width: 10px 12px 10px 0;
-                    border-style: solid;
-                    border-color: transparent #44a9e4 transparent transparent;
-                }
 
-            &__header{
+            &::before{
+                content: '';
+                position: absolute;
+                left: -12px;
+                top: 48px;
+                border-width: 10px 12px 10px 0;
+                border-style: solid;
+                border-color: transparent #44a9e4 transparent transparent;
+            }
+
+            &-header{
                 h3{
                     margin: 0 0 0.25rem 0;
                     font-size: 1.1rem;
@@ -255,7 +256,7 @@ $backgroud : #000;
                 }
             }
 
-            &__actions{
+            &-actions{
                 display: flex;
                 justify-content: flex-end;
                 gap: 0.75rem;
@@ -267,10 +268,11 @@ $backgroud : #000;
                     font-weight: 600;
                     font-size: 0.9rem;
                     transition: all 0.2s ease;
+                    cursor: pointer;
 
                     &:first-of-type{
                         background: transparent;
-                        color: #b3b3b3;
+                        color: rgba(255,255,255,0.75);
 
                         &:hover{
                             color: #ffffff;

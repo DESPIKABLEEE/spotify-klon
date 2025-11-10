@@ -24,6 +24,7 @@
       display: flex;
       align-items: center;
       cursor: pointer;
+      text-decoration: none;
     }
 
     .left-right {
@@ -105,20 +106,47 @@
 
         li {
           cursor: pointer;
-          padding: 0.5rem 1rem;
+          padding: 0;
           border-radius: 20px;
           transition: background-color 0.2s;
           display: flex;
           align-items: center;
 
-          &:hover {
+          &:not(.signup):hover {
             background-color: #282828;
+          }
+
+          a,
+          button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: inherit;
+          }
+
+          button {
+            color: white;
+          }
+
+          &.install-button:hover button {
+            background: transparent;
           }
 
           &.signup {
             background-color: white;
             color: black;
-            font-weight: bold;
+
+            a {
+              font-weight: bold;
+              color: inherit;
+            }
 
             &:hover {
               background-color: #f0f0f0;

@@ -96,9 +96,9 @@ const Trending = observer(() => {
                         <ul><a href="#" onClick={(event) => {
                         event.preventDefault(); setOpenPopup(false)}}>Not now</a>
                         </ul>
-                        <ul>
-                            <a href="#" onClick={(event) => event.preventDefault()}>Log in</a>
-                        </ul>
+            <ul>
+              <Link to="/login" onClick={() => setOpenPopup(false)}>Log in</Link>
+            </ul>
                     </li>
                       </div>
                     </div>

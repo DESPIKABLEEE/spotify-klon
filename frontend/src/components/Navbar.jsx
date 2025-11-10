@@ -1,5 +1,6 @@
 import './Navbar.scss'
 import { MagnifyingGlass, House, SpotifyLogo, DownloadSimple  } from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
@@ -7,9 +8,9 @@ function Navbar() {
       <div className="navbar">
         <div className="navbar-left">
             
-            <div className="left-left">
+            <Link to="/" className="left-left">
                 <SpotifyLogo size={34} weight='fill' color='#FFFFFF'/>
-            </div>
+            </Link>
             <div className="left-right">
                 <div className="home-icon">
                     <House size={24} weight='fill' color='white'/>
@@ -31,9 +32,9 @@ function Navbar() {
             </div>
             <div className="right-right">
                 <ul>
-                    <li><DownloadSimple size={20} weight='fill' color='white'/>Install App</li>
-                    <li className="signup">Sign up</li>
-                    <li>Log in</li>
+                    <li className="install-button"><button type="button"><DownloadSimple size={20} weight='fill' color='white'/>Install App</button></li>
+                    <li className="signup"><Link to="/register">Sign up</Link></li>
+                    <li><Link to="/login">Log in</Link></li>
                 </ul>
             </div>
             
