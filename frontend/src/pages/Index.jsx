@@ -1,15 +1,63 @@
 import './Index.scss'
 import { observer } from 'mobx-react-lite'
-// import authStore from '../stores/authStore'
+import { House, SpotifyLogo, User, Plus } from '@phosphor-icons/react'
+import uiStore from '../stores/uiStore'
 
 const Index = observer(() => {
   return (
     <div className='index-wrapper'>
-      <div className='index-container'>
-        <h1>Ulogiran si</h1>
+      <div className="index-navbar">
+            <div className="navbar-left">
+                <SpotifyLogo size={58} weight='fill' color='#FFFFFF'/>
+            </div>
+            <div className="navbar-center">
+                <div className='center-ikonica'><House size={34} weight='fill' color='white'/></div>
 
-
+                <input type="text" placeholder="Search.."></input>
+            </div>
+            <div className="navbar-right">
+                <User size={34} color="#ffffff" weight="thin" />
+            </div>
       </div>
+        <div className="index-main-content">
+            <div className="index-left-sidebar">
+              <div className="index-left-sidebar__header">
+                <p className="sidebar-title">Library</p>
+                <button
+                  type="button"
+                  className={`sidebar-create${uiStore.libraryCreateOpen ? ' is-open' : ''}`}
+                  onClick={() => uiStore.toggleLibraryCreate()}
+                  aria-expanded={uiStore.libraryCreateOpen}
+                >
+                  <span className="sidebar-create__icon">
+                    <Plus size={18} weight='bold' />
+                  </span>
+                  <span className="sidebar-create__text">Create</span>
+                </button>
+              </div>
+
+              {uiStore.libraryCreateOpen && (
+                <div className="sidebar-popup">
+                  <h3>Create a playlist?</h3>
+                  <p>Do you want to create a new playlist right now?</p>
+                  <div className="sidebar-popup__actions">
+                    <button type="button" onClick={() => uiStore.closeLibraryCreate()}>Not now</button>
+                    <button type="button" className="confirm" onClick={() => uiStore.closeLibraryCreate()}>Create playlist</button>
+                  </div>
+                </div>
+              )}
+
+            </div>
+            <div className="index-middle-bar">
+
+            </div>
+            <div className="index-right-sidebar">
+
+            </div>
+        </div>
+        <div className="index-footer">
+
+        </div>
     </div>
   )
 })
