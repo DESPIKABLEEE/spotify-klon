@@ -16,5 +16,5 @@ EXPOSE 5175
 # Helpful env var (optional)
 ENV PORT=5175
 
-# Start dev server (vite listens on host/port from config or CLI)
-CMD ["npm", "run", "dev"]
+# Start dev server with an explicit host binding for Docker
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5175"]
